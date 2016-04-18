@@ -1,0 +1,26 @@
+{
+    "name":         "uber-grabber",
+    "version":      "0.0.1",
+    "description":  "Uber Grabber",
+    "author":       "Jordan Sexton <jordan@jordansexton.com>",
+    "private":      true,
+    "scripts":      {
+        "postinstall": "selenium-standalone install",
+        "selenium":    "selenium-standalone start",
+        "test":        "mocha --timeout 10000 --slow 500 --bail"
+    },
+    "engines":      {
+        "node": "^4.x"
+    },
+    "dependencies": {
+        "bluebird":            "2.10.2",
+        "moment":              "2.11.2",
+        "chai":                "3.5.0",
+        "chai-as-promised":    "5.2.0",
+        "co-mocha":            "1.1.2",
+        "debug":               "2.2.0",
+        "mocha":               "2.4.5",
+        "selenium-standalone": "4.9.0",
+        "webdriverio":         "4.0.3"
+    }
+}
