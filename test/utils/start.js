@@ -1,13 +1,13 @@
 'use strict';
 
-var start = function (path) {
+const start = function (path) {
     if (path == null) {
         path = '/';
     }
-    return function* () {
-        yield browser.init();
-        yield browser.setViewportSize({ width:  1280, height: 800 }, false);
-        yield browser.url(path);
+    return async function () {
+        await browser.init();
+        await browser.setViewportSize({ width:  1280, height: 800 }, false);
+        await browser.url(path);
     };
 };
 

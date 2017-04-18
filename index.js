@@ -1,6 +1,6 @@
 'use strict';
 
-var path = require('path');
+const path = require('path');
 
 global.file     = path.resolve(__dirname, 'uber.tsv');
 global.email    = '<email>';

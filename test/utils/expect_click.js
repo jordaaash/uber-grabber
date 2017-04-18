@@ -1,9 +1,9 @@
 'use strict';
 
-var clickElement = require('./click_element');
+const clickElement = require('./click_element');
 
-var expectClick = function* (element) {
-    expect(yield clickElement(element)).to.be.true;
+const expectClick = async function (element) {
+    expect(await clickElement(element)).to.be.true;
 };
 
 module.exports = expectClick;

@@ -1,52 +1,52 @@
 'use strict';
 
-var moment    = require('moment');
-var Promise   = require('bluebird');
-var fs        = require('fs');
-var writeFile = Promise.promisify(fs.writeFile);
+const moment    = require('moment');
+const Promise   = require('bluebird');
+const fs        = require('fs');
+const writeFile = Promise.promisify(fs.writeFile);
 
 describe('uber', function () {
-    var data = {};
+    const data = {};
 
     before(start('https://login.uber.com/login'));
 
     describe('login', function () {
-        var context = {};
+        const context = {};
 
-        before(function* () {
-            context.container = yield browser.element('#login-form');
+        before(async function () {
+            context.container = await browser.element('#login-form');
         });
 
-        describeInput(context, 'email', email);
+        describeInput(context, 'email', global.email);
 
-        describeInput(context, 'password', password);
+        describeInput(context, 'password', global.password);
 
         describeSubmit(context, function () {
-            it('obtains login cookie', function* () {
-                yield browser.pause(3000);
-                yield expectCookie('currentLoginSession');
+            it('obtains login cookie', async function () {
+                await browser.pause(3000);
+                await expectCookie('currentLoginSession');
             });
         });
     });
 
     describe('trips', function () {
-        trips.forEach(function (trip) {
+        global.trips.forEach(function (trip) {
             describe('trip: ' + trip, function () {
-                var dateTime, startTime, startAddress, endTime, endAddress, car, miles, time, fare;
-                before(function* () {
-                    yield browser.url(trip);
+                let dateTime, startTime, startAddress, endTime, endAddress, car, miles, time, fare;
+                before(async function () {
+                    await browser.url(trip);
                 });
 
-                it('gets data', function* () {
-                    dateTime     = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.page-lead > div');
-                    startTime    = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft.separated--bottom > div.trip-address.grid.grid--full.soft-double--bottom > div.grid__item.nine-tenths > p');
-                    startAddress = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft.separated--bottom > div.trip-address.grid.grid--full.soft-double--bottom > div.grid__item.nine-tenths > h6');
-                    endTime      = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft.separated--bottom > div:nth-child(2) > div.grid__item.nine-tenths > p');
-                    endAddress   = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft.separated--bottom > div:nth-child(2) > div.grid__item.nine-tenths > h6');
-                    car          = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft--top > div > div:nth-child(1) > h5');
-                    miles        = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft--top > div > div:nth-child(2) > h5');
-                    time         = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft--top > div > div:nth-child(3) > h5');
-                    fare         = yield getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(2) > table > tbody > tr:last-child > td.text--right.alpha.weight--semibold');
+                it('gets data', async function () {
+                    dateTime     = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.page-lead > div');
+                    startTime    = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft.separated--bottom > div.trip-address.grid.grid--full.soft-double--bottom > div.grid__item.nine-tenths > p');
+                    startAddress = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft.separated--bottom > div.trip-address.grid.grid--full.soft-double--bottom > div.grid__item.nine-tenths > h6');
+                    endTime      = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft.separated--bottom > div:nth-child(2) > div.grid__item.nine-tenths > p');
+                    endAddress   = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft.separated--bottom > div:nth-child(2) > div.grid__item.nine-tenths > h6');
+                    car          = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft--top > div > div:nth-child(1) > h5');
+                    miles        = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft--top > div > div:nth-child(2) > h5');
+                    time         = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(1) > div.separated.section--light > div.soft--top > div > div:nth-child(3) > h5');
+                    fare         = await getText('#slide-menu-content > div > div.flexbox__item.flexbox__item--expand > div > div > div.flexbox__item.four-fifths.page-content > div.trip-details__breakdown.container > div > div:nth-child(2) > table > tbody > tr:last-child > td.text--right.alpha.weight--semibold');
 
                     dateTime = moment(dateTime, 'h:mm A on MMMM D YYYY');
 
@@ -66,16 +66,16 @@ describe('uber', function () {
         });
     });
 
-    after(function* () {
-        var rows = [['date', 'fare', 'miles', 'time', 'startAddress', 'startTime', 'endAddress', 'endTime', 'car', 'trip']];
+    after(async function () {
+        const rows = [['date', 'fare', 'miles', 'time', 'startAddress', 'startTime', 'endAddress', 'endTime', 'car', 'trip']];
         Object.keys(data).map(function (trip) {
-            var row = data[trip];
+            const row = data[trip];
             rows.push([row.date, row.fare, row.miles, row.time, row.startAddress, row.startTime, row.endAddress, row.endTime, row.car, trip]);
         });
-        var tsv = rows.map(function (row) {
+        const tsv = rows.map(function (row) {
             return row.join('\t');
         }).join('\n');
-        yield browser.end();
-        yield writeFile(file, tsv);
+        await browser.end();
+        await writeFile(global.file, tsv);
     });
 });

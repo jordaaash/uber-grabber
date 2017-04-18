@@ -1,0 +1,26 @@
+{
+    "extends": "../.eslintrc",
+    "env":     {
+        "mocha": true,
+        "node":  true
+    },
+    "globals": {
+        "browser":        true,
+        "chai":           true,
+        "clickElement":   true,
+        "describeInput":  true,
+        "describeSubmit": true,
+        "expect":         true,
+        "expectClick":    true,
+        "expectCookie":   true,
+        "getAttribute":   true,
+        "getElement":     true,
+        "getElements":    true,
+        "getText":        true,
+        "getURL":         true,
+        "getValue":       true,
+        "setValue":       true,
+        "start":          true,
+        "stop":           true
+    }
+}

@@ -1,8 +1,8 @@
 'use strict';
 
-var resolveElement = function* (element) {
+const resolveElement = async function (element) {
     if (typeof element === 'string') {
-        element = yield browser.element(element);
+        element = await browser.element(element);
     }
     return element.ELEMENT || element.value.ELEMENT;
 };

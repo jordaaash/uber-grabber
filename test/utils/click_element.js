@@ -1,10 +1,10 @@
 'use strict';
 
-var resolveElement = require('./resolve_element');
+const resolveElement = require('./resolve_element');
 
-var clickElement = function* (element) {
-    var ELEMENT  = yield resolveElement(element);
-    var response = yield browser.elementIdClick(ELEMENT);
+const clickElement = async function (element) {
+    const ELEMENT  = await resolveElement(element);
+    const response = await browser.elementIdClick(ELEMENT);
     return (response.state === 'success');
 };
 

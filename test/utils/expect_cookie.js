@@ -1,7 +1,7 @@
 'use strict';
 
-var expectCookie = function* (key) {
-    var cookie = yield browser.getCookie(key);
+const expectCookie = async function (key) {
+    const cookie = await browser.getCookie(key);
     expect(cookie).not.to.null;
     expect(cookie.value).not.to.be.empty;
 };

@@ -1,8 +1,8 @@
 'use strict';
 
-var stop = function () {
-    return function* () {
-        yield browser.end();
+const stop = function () {
+    return async function () {
+        await browser.end();
     };
 };
 
