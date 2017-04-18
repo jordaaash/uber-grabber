@@ -1,9 +1,9 @@
 'use strict';
 
-require('co-mocha')(require('mocha'));
+require('mocha');
 
-var chai        = require('chai');
-var WebdriverIO = require('webdriverio');
+const chai        = require('chai');
+const WebdriverIO = require('webdriverio');
 
 chai.config.includeStack = true;
 

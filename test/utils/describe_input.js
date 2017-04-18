@@ -1,8 +1,8 @@
 'use strict';
 
-var describeSetValue = require('./describe_set_value');
+const describeSetValue = require('./describe_set_value');
 
-var describeInput = function (context, name, value) {
+const describeInput = function (context, name, value) {
     return describeSetValue(context, 'input', name, value);
 };
 

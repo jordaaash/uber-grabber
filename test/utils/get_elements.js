@@ -1,10 +1,10 @@
 'use strict';
 
-var resolveElement = require('./resolve_element');
+const resolveElement = require('./resolve_element');
 
-var getElements = function* (element, selector) {
-    var ELEMENT     = yield resolveElement(element);
-    var descendants = yield browser.elementIdElements(ELEMENT, selector);
+const getElements = async function (element, selector) {
+    const ELEMENT     = await resolveElement(element);
+    const descendants = await browser.elementIdElements(ELEMENT, selector);
     return descendants.value;
 };
 

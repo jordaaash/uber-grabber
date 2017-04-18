@@ -1,26 +1,30 @@
 {
-    "name":         "uber-grabber",
-    "version":      "0.0.1",
-    "description":  "Uber Grabber",
-    "author":       "Jordan Sexton <jordan@jordansexton.com>",
-    "private":      true,
-    "scripts":      {
+    "name":            "uber-grabber",
+    "version":         "0.1.0",
+    "description":     "Uber Grabber",
+    "author":          "Jordan Sexton <jordan@jordansexton.com>",
+    "private":         true,
+    "scripts":         {
+        "lint":        "eslint --ext .js .",
         "postinstall": "selenium-standalone install",
         "selenium":    "selenium-standalone start",
         "test":        "mocha --timeout 10000 --slow 500 --bail"
     },
-    "engines":      {
-        "node": "^4.x"
+    "engines":         {
+        "node": ">=7.6.0"
     },
-    "dependencies": {
-        "bluebird":            "2.10.2",
-        "moment":              "2.11.2",
+    "dependencies":    {
+        "bluebird":            "3.5.0",
+        "moment":              "2.18.1",
         "chai":                "3.5.0",
-        "chai-as-promised":    "5.2.0",
-        "co-mocha":            "1.1.2",
-        "debug":               "2.2.0",
-        "mocha":               "2.4.5",
-        "selenium-standalone": "4.9.0",
-        "webdriverio":         "4.0.3"
+        "chai-as-promised":    "6.0.0",
+        "debug":               "2.6.3",
+        "mocha":               "3.2.0",
+        "selenium-standalone": "6.2.0",
+        "webdriverio":         "4.6.2"
+    },
+    "devDependencies": {
+        "babel-eslint": "7.2.2",
+        "eslint":       "3.19.0"
     }
 }

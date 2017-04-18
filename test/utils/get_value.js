@@ -1,9 +1,9 @@
 'use strict';
 
-var getAttribute = require('./get_attribute');
+const getAttribute = require('./get_attribute');
 
-var getValue = function* (element) {
-    return yield getAttribute(element, 'value');
+const getValue = async function (element) {
+    return await getAttribute(element, 'value');
 };
 
 module.exports = getValue;

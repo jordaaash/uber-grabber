@@ -1,7 +1,7 @@
 'use strict';
 
-var getURL = function* () {
-    var url = yield browser.url();
+const getURL = async function () {
+    const url = await browser.url();
     return url.value;
 };
 
